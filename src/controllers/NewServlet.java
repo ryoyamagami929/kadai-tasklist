@@ -36,23 +36,23 @@ public class NewServlet extends HttpServlet {
         em.getTransaction().begin();
 
         // Messageのインスタンスを生成
-        Task m = new Task();
+        Task t = new Task();
 
         // mの各フィールドにデータを代入
 
         String content = "task1";
-        m.setContent(content);
+        t.setContent(content);
 
         Timestamp currentTime = new Timestamp(System.currentTimeMillis());     // 現在の日時を取得
-        m.setCreated_at(currentTime);
-        m.setUpdated_at(currentTime);
+        t.setCreated_at(currentTime);
+        t.setUpdated_at(currentTime);
 
         // データベースに保存
-        em.persist(m);
+        em.persist(t);
         em.getTransaction().commit();
 
         // 自動採番されたIDの値を表示
-        response.getWriter().append(Integer.valueOf(m.getId()).toString());
+        response.getWriter().append(Integer.valueOf(t.getId()).toString());
 
         em.close();
      }
